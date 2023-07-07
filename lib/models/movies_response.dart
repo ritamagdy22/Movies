@@ -3,44 +3,41 @@
 /// total_pages : 38843
 /// total_results : 776846
 
-class SourceResponse {
-  SourceResponse({
-      this.page, 
-      this.results, 
-      this.totalPages, 
-      this.totalResults,
-  //this.message,
+class MoviesResponse {
+  MoviesResponse({
+    this.page,
+    this.movies,
+    this.totalPages,
+    this.totalResults,
+    //this.message,
     //this.code,
-
   });
-
-  SourceResponse.fromJson(dynamic json) {
+  MoviesResponse.fromJson(dynamic json) {
     page = json['page'];
     if (json['results'] != null) {
-      results = [];
+      movies = [];
       json['results'].forEach((v) {
-        results?.add(Results.fromJson(v));
+        movies?.add(Movie.fromJson(v));
       });
     }
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
   num? page;
-  List<Results>? results;
+  List<Movie>? movies;
   num? totalPages;
   num? totalResults;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['page'] = page;
-    if (results != null) {
-      map['results'] = results?.map((v) => v.toJson()).toList();
+    if (movies != null) {
+      map['results'] = movies?.map((v) => v.toJson()).toList();
     }
     map['total_pages'] = totalPages;
     map['total_results'] = totalResults;
     return map;
   }
-
 }
 
 /// adult : false
@@ -58,24 +55,25 @@ class SourceResponse {
 /// vote_average : 7.3
 /// vote_count : 1926
 
-class Results {
-  Results({
-      this.adult, 
-      this.backdropPath, 
-      this.genreIds, 
-      this.id, 
-      this.originalLanguage, 
-      this.originalTitle, 
-      this.overview, 
-      this.popularity, 
-      this.posterPath, 
-      this.releaseDate, 
-      this.title, 
-      this.video, 
-      this.voteAverage, 
-      this.voteCount,});
+class Movie {
+  Movie({
+    this.adult,
+    this.backdropPath,
+    this.genreIds,
+    this.id,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
+  });
 
-  Results.fromJson(dynamic json) {
+  Movie.fromJson(dynamic json) {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'] != null ? json['genre_ids'].cast<num>() : [];
@@ -127,5 +125,4 @@ class Results {
     map['vote_count'] = voteCount;
     return map;
   }
-
 }
