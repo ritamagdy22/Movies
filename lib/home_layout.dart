@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/screens/home_screen.dart';
-import 'package:movies/api_manager.dart';
+
+import 'package:movies/tabs/BrowserTab.dart';
+import 'package:movies/tabs/LaterTab.dart';
+import 'package:movies/search/SearchTab.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String routename = "home-layout";
@@ -21,14 +24,20 @@ class _HomeLayoutState extends State<HomeLayout> {
         centerTitle: true,
         backgroundColor: Colors.blueGrey,
         title: Text(
-          "Movie App Project",
+          "Movies",
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
           ),
         ),
+
+
       ),
+
+
+
       bottomNavigationBar: BottomNavigationBar(
+
         backgroundColor: Colors.blueGrey,
         type: BottomNavigationBarType.fixed,
 
@@ -46,7 +55,12 @@ class _HomeLayoutState extends State<HomeLayout> {
               icon: Icon(Icons.watch_later), label: "Later"),
         ],
       ),
-      body: HomeScreen(),
+      body: tabs[selectedindex],
     );
   }
+
+  List<Widget>tabs =[
+   HomeScreen(), SearchTab(),BrowserTab(),LaterTab()
+
+  ];
 }

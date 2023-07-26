@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/api_manager.dart';
 import 'package:movies/models/movies_response.dart';
-import 'package:movies/widgets/popular_movie_item.dart';
+import 'package:movies/widgets/popular/popular_movie_item.dart';
 
 class PopularSection extends StatelessWidget {
   PopularSection();
