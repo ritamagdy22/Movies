@@ -3,6 +3,7 @@ import 'package:movies/models/movies_response.dart';
 
 class TopRatedMovieItem extends StatelessWidget {
   Movie movie;
+
   TopRatedMovieItem({required this.movie});
 
   @override

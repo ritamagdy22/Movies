@@ -4,6 +4,7 @@ import 'package:movies/models/movies_response.dart';
 class PopularMovieItem extends StatelessWidget {
   //object from results
   Movie movie;
+
   //constructor lel results
   PopularMovieItem({required this.movie});
 

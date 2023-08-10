@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/screens/home_screen.dart';
-
+import 'package:movies/search/SearchTab.dart';
 import 'package:movies/tabs/BrowserTab.dart';
 import 'package:movies/tabs/LaterTab.dart';
-import 'package:movies/search/SearchTab.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String routename = "home-layout";
@@ -30,14 +28,8 @@ class _HomeLayoutState extends State<HomeLayout> {
             color: Colors.white,
           ),
         ),
-
-
       ),
-
-
-
       bottomNavigationBar: BottomNavigationBar(
-
         backgroundColor: Colors.blueGrey,
         type: BottomNavigationBarType.fixed,
 
@@ -45,7 +37,8 @@ class _HomeLayoutState extends State<HomeLayout> {
         onTap: (index) {
           selectedindex = index;
           setState(() {});
-        }, // This is all you need!
+        },
+        // This is all you need!
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "search"),
@@ -59,8 +52,5 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-  List<Widget>tabs =[
-   HomeScreen(), SearchTab(),BrowserTab(),LaterTab()
-
-  ];
+  List<Widget> tabs = [HomeScreen(), SearchTab(), BrowserTab(), LaterTab()];
 }

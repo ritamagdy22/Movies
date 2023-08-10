@@ -12,6 +12,7 @@ class MoviesResponse {
     //this.message,
     //this.code,
   });
+
   MoviesResponse.fromJson(dynamic json) {
     page = json['page'];
     if (json['results'] != null) {
@@ -23,6 +24,7 @@ class MoviesResponse {
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
+
   num? page;
   List<Movie>? movies;
   num? totalPages;
@@ -89,6 +91,7 @@ class Movie {
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
   }
+
   bool? adult;
   String? backdropPath;
   List<num>? genreIds;

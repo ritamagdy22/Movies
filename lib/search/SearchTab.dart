@@ -12,10 +12,14 @@ class SearchTab extends StatelessWidget {
         Padding(padding: EdgeInsets.all(170.20)),
         Text("Feel free to search your favourite movie"),
         Center(
-          child: IconButton(onPressed: ()=>showSearch(context: context, delegate: MovieSearch()),
-              icon: Icon(Icons.search, size: 30,)),
+          child: IconButton(
+              onPressed: () =>
+                  showSearch(context: context, delegate: MovieSearch()),
+              icon: Icon(
+                Icons.search,
+                size: 30,
+              )),
         )
-
       ],
     );
   }
