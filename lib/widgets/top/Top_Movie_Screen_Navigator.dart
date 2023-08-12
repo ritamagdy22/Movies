@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movies/models/movies_response.dart';
 
-class LatestMovieScreenNavigator extends StatelessWidget {
-  static const String RouteName = "MovieScreenNavigator";
+class TopMovieScreenNavigator extends StatelessWidget {
+  static const String RouteName = "TopMovieScreenNavigator";
+
   @override
   Widget build(BuildContext context) {
     var movie = ModalRoute.of(context)!.settings.arguments as Movie;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Movie Details"),
+        title: Text("Top movies"),
       ),
       body: Column(
         children: [

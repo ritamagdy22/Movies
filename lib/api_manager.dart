@@ -31,26 +31,88 @@ class ApiManager {
     } catch (e) {
       throw e;
     }
-// try and catsh to handle error from server
-    ////link al sora https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
   }
-
-  static Future<MoviesResponse> getLatest({String? MovieSearch}) async {
-    /*
-  https://api.themoviedb.org/3/movie/latest
-  */
-    var url = Uri.https(baseUrl, '/3/movie/latest',
-        {"api_key": "d052d67854179f6ea4ff18c7db07adfd", "q": MovieSearch});
-    var response = await http.get(url); // response from server
+  static Future<MoviesResponse> getLatestMovie({String? MovieSearch}) async {
     try {
-      var bodyString = response.body; // response came in body
-      var json = jsonDecode(bodyString); // switch string to json
-      var sourceResponse = MoviesResponse.fromJson(json); // fromjson
-      return sourceResponse;
+      // Construct the URL for the latest movie endpoint
+      var url = Uri.https(
+        baseUrl,
+        '/3/movie/latest',
+        // Include the API key as a query parameter
+        {"api_key": "d052d67854179f6ea4ff18c7db07adfd"},
+      );
+
+      // Make the GET request
+      var response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        // Parse the JSON response
+        var json = jsonDecode(response.body);
+        var latestMovie = MoviesResponse.fromJson(json); // Replace with your parsing logic
+        return latestMovie;
+      } else {
+        // If the API call fails, throw an exception
+        throw Exception('Failed to load latest movie');
+      }
     } catch (e) {
+      // Handle any exceptions that occur during the API call
       throw e;
     }
-// try and catsh to handle error from server
-    ////link al sora https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
+  }
+  static Future<MoviesResponse> getTopRatedMovies({String? MovieSearch}) async {
+    try {
+      // Construct the URL for the top_rated endpoint
+      var url = Uri.https(
+        baseUrl,
+        '/3/movie/top_rated',
+        // Include the API key as a query parameter
+        {"api_key": "d052d67854179f6ea4ff18c7db07adfd"},
+      );
+
+      // Make the GET request
+      var response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        // Parse the JSON response
+        var json = jsonDecode(response.body);
+        var sourceResponse =
+            MoviesResponse.fromJson(json); // Replace with your parsing logic
+        return sourceResponse;
+      } else {
+        // If the API call fails, throw an exception
+        throw Exception('Failed to load top-rated movies');
+      }
+    } catch (e) {
+      // Handle any exceptions that occur during the API call
+      throw e;
+    }
+  }
+  static Future<MoviesResponse> getMovieDetails(int movieId) async {
+    try {
+      // Construct the URL for the specific movie endpoint
+      var url = Uri.https(
+        baseUrl,
+        '/3/movie/$movieId',
+        // Include the API key as a query parameter
+        {"api_key": "d052d67854179f6ea4ff18c7db07adfd"},
+      );
+
+      // Make the GET request
+      var response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        // Parse the JSON response
+        var json = jsonDecode(response.body);
+        var movieDetails =
+            MoviesResponse.fromJson(json); // Replace with your parsing logic
+        return movieDetails;
+      } else {
+        // If the API call fails, throw an exception
+        throw Exception('Failed to load movie details');
+      }
+    } catch (e) {
+      // Handle any exceptions that occur during the API call
+      throw e;
+    }
   }
 }

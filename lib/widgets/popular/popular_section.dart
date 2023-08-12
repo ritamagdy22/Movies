@@ -25,12 +25,20 @@ class PopularSection extends StatelessWidget {
             );
           }
           var movies = snapshot.data?.movies ?? [];
-          return ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: ((context, index) {
-              return PopularMovieItem(movie: movies[index]);
-            }),
-            itemCount: movies.length,
+          return Scaffold(
+
+            body: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: movies.length,
+                itemBuilder: ((context, index) => Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Container(
+                          width: 380,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: PopularMovieItem(movie: movies[index])),
+                    ))),
           );
         }));
   }
